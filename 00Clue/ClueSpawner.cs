@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class ClueSpawner : MonoBehaviour
 {
     [SerializeField] GameObject cluePrefab;
-    public static GameObject clueInstance; // 이미 생성된 추리노트 유무 확인용
+    public static GameObject clueInstance;
+
+    //public static bool IsClueOpen { get; private set; } = false;
 
     public void ClueSpawn()
     {

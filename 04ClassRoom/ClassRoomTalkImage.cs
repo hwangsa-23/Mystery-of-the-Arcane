@@ -12,6 +12,8 @@ public class ClassRoomTalkImage : MonoBehaviour
     int index;
     float charPerSeconds = 20f;
 
+    //누구랑 대화했는지 확인용
+    string TalkWith;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class ClassRoomTalkImage : MonoBehaviour
 
     public void SetCharacterTag(string tag)
     {
+        TalkWith = tag;
         if (tag == "Claudia")
         {
             myText = "리사가 이안을 따라다니며 뭔가 훔치려 했다더라.";
@@ -68,5 +71,7 @@ public class ClassRoomTalkImage : MonoBehaviour
         }
 
         closeButton.SetActive(true);
+
+        TalkManager.instance.SetActiveClassRoom1(TalkWith);
     }
 }

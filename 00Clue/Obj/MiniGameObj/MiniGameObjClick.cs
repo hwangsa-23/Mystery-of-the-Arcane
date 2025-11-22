@@ -6,11 +6,6 @@ public class MiniGameObjClick : MonoBehaviour
 {
     ClueObjBox clueObjBox;
 
-    private void Awake()
-    {
-        clueObjBox = ClueObjBox.Instance;
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -37,7 +32,14 @@ public class MiniGameObjClick : MonoBehaviour
 
             print($"{mutableClue.name} »πµÊ");
 
-            clueObjBox.AddObj(mutableClue);
+            if (ClueObjBox.Instance != null)
+            {
+                ClueObjBox.Instance.AddObj(mutableClue);
+            }
+            else
+            {
+                Debug.LogError("ClueObjBox ΩÃ±€≈Ê¿Ã √ ±‚»≠µ«¡ˆ æ æ“Ω¿¥œ¥Ÿ.");
+            }
         }
     }
 

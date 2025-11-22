@@ -42,6 +42,6 @@ public class StartDirector : MonoBehaviour
 
     void OnQuitButtonClicked()
     {
-        SceneManager.LoadScene("ClassRoom");
+        SceneManager.LoadScene("04ClassRoom");
     }
 }

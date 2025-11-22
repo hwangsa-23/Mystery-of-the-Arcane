@@ -1,51 +1,86 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MiniGameObj : MonoBehaviour, InterfaceMiniGameObj
 {
-    [Header("¿ÀºêÁ§Æ® ÀÌ¹ÌÁö")]
+    [Header("ì˜¤ë¸Œì íŠ¸ ì´ë¯¸ì§€")]
     public SpriteRenderer ObjImage;
-    [Header("Art ¿ÀºêÁ§Æ®")]
-    public ClueObj artObj;
-    [Header("English ¿ÀºêÁ§Æ®")]
-    public ClueObj engObj;
-    [Header("¿ÀºêÁ§Æ® ¾Ö´Ï¸ŞÀÌÅÍ")]
+    [Header("ë¯¸ë‹ˆê²Œì„ ì˜¤ë¸Œì íŠ¸")]
+    public ClueObj Obj1;
+    public ClueObj Obj2;
+    [Header("ì˜¤ë¸Œì íŠ¸ ì• ë‹ˆë©”ì´í„°")]
     [SerializeField] Animator ani;
     [Header("Background")]
     [SerializeField] GameObject ObjBackground;
 
     ClueObj Obj;
+    string goClass;
 
     Vector3 originalScale;
+
+
+    // MiniGameObj.cs (Awake í•¨ìˆ˜ ìˆ˜ì •)
+
     void Awake()
     {
-        if (ClassRoomGameManager.Instance.JustClearedArt == true)
+        // ğŸŒŸ ì•ˆì „ ì²´í¬ 1: ClassRoomGameManager ì´ˆê¸°í™” í™•ì¸
+        if (ClassRoomGameManager.Instance != null && ClassRoomGameManager.Instance.JustClearedArt == true)
         {
-            Obj = artObj;
+            Obj = Obj1;
+            goClass = "04ClassRoom";
             ClassRoomGameManager.Instance.JustClearedArt = false;
         }
-        else if (ClassRoomGameManager.Instance.JustClearedEnglish == true)
+        // ğŸŒŸ ì•ˆì „ ì²´í¬ 2: ClassRoomGameManagerê°€ ì—¬ì „íˆ nullì´ ì•„ë‹ ë•Œë§Œ ë‹¤ìŒ ì¡°ê±´ í™•ì¸
+        else if (ClassRoomGameManager.Instance != null && ClassRoomGameManager.Instance.JustClearedEnglish == true)
         {
-            Obj = engObj;
+            Obj = Obj2;
+            goClass = "04ClassRoom";
             ClassRoomGameManager.Instance.JustClearedEnglish = false;
         }
+        // ğŸŒŸ ì•ˆì „ ì²´í¬ 3: LibraryGameManager ì´ˆê¸°í™” í™•ì¸
+        else if (LibraryGameManager.Instance != null && LibraryGameManager.Instance.JustClearedHistory == true)
+        {
+            Obj = Obj1;
+            goClass = "05Library";
+            LibraryGameManager.Instance.JustClearedHistory = false;
+        }
+        // ğŸŒŸ ì•ˆì „ ì²´í¬ 4: LibraryGameManagerê°€ ì—¬ì „íˆ nullì´ ì•„ë‹ ë•Œë§Œ ë‹¤ìŒ ì¡°ê±´ í™•ì¸
+        else if (LibraryGameManager.Instance != null && LibraryGameManager.Instance.JustClearedKorean == true)
+        {
+            Obj = Obj2;
+            goClass = "05Library";
+            LibraryGameManager.Instance.JustClearedKorean = false;
+        }
+        else if (SilheomsilGameManager.Instance != null && SilheomsilGameManager.Instance.JustClearedMath == true)
+        {
+            Obj = Obj1;
+            goClass = "06Silheomsil";
+            SilheomsilGameManager.Instance.JustClearedMath = false;
+        }
+        else if (SilheomsilGameManager.Instance != null && SilheomsilGameManager.Instance.JustClearedScience == true)
+        {
+            Obj = Obj2;
+            goClass = "06Silheomsil";
+            SilheomsilGameManager.Instance.JustClearedScience = false;
+        }
     }
+
     void Start()
     {
         ObjBackground.SetActive(false);
         ObjImage.sprite = Obj.ObjImage;
 
-        //Grow¿¡ ÇÊ¿ä
+        //Growì— í•„ìš”
         originalScale = transform.localScale;
         transform.localScale = Vector3.zero;
         StartCoroutine(Grow());
     }
-    //¿ÀºêÁ§Æ® µîÀå
+    //ì˜¤ë¸Œì íŠ¸ ë“±ì¥
     IEnumerator Grow()
     {
-        float duration = 0.7f; //Ä¿Áö´Â ½Ã°£
+        float duration = 0.7f; //ì»¤ì§€ëŠ” ì‹œê°„
         float t = 0;
         while (t < duration)
         {
@@ -57,10 +92,10 @@ public class MiniGameObj : MonoBehaviour, InterfaceMiniGameObj
         ObjBackground.SetActive(true);
     }
 
-    //¿ÀºêÁ§Æ® Å¬¸¯
+    //ì˜¤ë¸Œì íŠ¸ í´ë¦­
     public ClueObj ClickObj()
     {
-        //Debug.Log("Å¬¸¯µÊ");
+        //Debug.Log("í´ë¦­ë¨");
 
         ObjBackground.SetActive(false);
         ani.SetBool("isClicked", true);
@@ -68,7 +103,7 @@ public class MiniGameObj : MonoBehaviour, InterfaceMiniGameObj
     }
     //void OnMouseDown()
     //{
-    //    Debug.Log("Å¬¸¯µÊ");
+    //    Debug.Log("í´ë¦­ë¨");
     //    ani.SetBool("isClicked", true);
     //}
 
@@ -81,7 +116,7 @@ public class MiniGameObj : MonoBehaviour, InterfaceMiniGameObj
 
     void GoClass()
     {
-        SceneManager.LoadScene("04ClassRoom");
+        SceneManager.LoadScene(goClass);
     }
 
 }

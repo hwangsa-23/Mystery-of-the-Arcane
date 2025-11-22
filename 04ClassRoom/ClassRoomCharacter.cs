@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using System;
 
 public class ClassRoomCharacter : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class ClassRoomCharacter : MonoBehaviour
         {
             closeButton.onClick.RemoveAllListeners();       // 중복 등록 방지
             closeButton.onClick.AddListener(ClidkedClose); // this.ClidkedClose 등록
-            closeButton.gameObject.SetActive(true);         // 버튼 표시
+            closeButton.gameObject.SetActive(false);         // 버튼 표시
         }
         else
         {
