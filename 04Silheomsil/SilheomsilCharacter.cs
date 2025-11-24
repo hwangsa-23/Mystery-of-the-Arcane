@@ -22,6 +22,8 @@ public class SilheomsilCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
+
         characterTag = gameObject.tag;
         SilheomsilTalkImage talkImage = TalkImage.GetComponent<SilheomsilTalkImage>();
         talkImage.SetCharacterTag(characterTag);

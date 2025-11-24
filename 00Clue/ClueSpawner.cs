@@ -6,7 +6,7 @@ public class ClueSpawner : MonoBehaviour
     [SerializeField] GameObject cluePrefab;
     public static GameObject clueInstance;
 
-    //public static bool IsClueOpen { get; private set; } = false;
+    public static bool IsClueOpen { get; private set; } = false;
 
     public void ClueSpawn()
     {
@@ -24,5 +24,19 @@ public class ClueSpawner : MonoBehaviour
         clueInstance.SetActive(false);
 
         Debug.Log("추리노트 생성 완료");
+    }
+
+    public static void OpenClue()
+    {
+        if (clueInstance == null) return;
+        clueInstance.SetActive(true);
+        IsClueOpen = true;
+    }
+
+    public static void CloseClue()
+    {
+        if (clueInstance == null) return;
+        clueInstance.SetActive(false);
+        IsClueOpen = false;
     }
 }

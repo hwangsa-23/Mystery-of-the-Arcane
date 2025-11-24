@@ -36,7 +36,7 @@ public class ClueButton : MonoBehaviour
         }
 
         //Debug.Log("추리노트 버튼 누름");
-        ClueSpawner.clueInstance.SetActive(true);
+        ClueSpawner.OpenClue();
         clueButton.SetActive(false);           
 
         //Test에 ClueObjBox 전달

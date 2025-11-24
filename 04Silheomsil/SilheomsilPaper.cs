@@ -7,8 +7,9 @@ public class SilheomsilPaper : MonoBehaviour
 {
     private void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
 
-        Debug.Log($"{gameObject.name} Å¬¸¯µÊ, Tag: {gameObject.tag}");
+        //Debug.Log($"{gameObject.name} Å¬¸¯µÊ, Tag: {gameObject.tag}");
 
         if (gameObject.tag == "Math")
         {

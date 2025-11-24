@@ -24,6 +24,8 @@ public class ShowBoard : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
+
         // 게시판 열기
         if (boardPanel != null)
             boardPanel.SetActive(true);

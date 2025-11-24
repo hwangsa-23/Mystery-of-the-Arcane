@@ -10,7 +10,6 @@ public class LibraryCharacter : MonoBehaviour
     [SerializeField] GameObject otherCharacter1;
     [SerializeField] GameObject otherCharacter2;
     [SerializeField] Button closeButton;
-    //[SerializeField] Button nextBtnComp;
     [SerializeField] GameObject ClaudiaImage;
     [SerializeField] GameObject ElinaImage;
     [SerializeField] GameObject LisaImage;
@@ -23,6 +22,8 @@ public class LibraryCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
+
         characterTag = gameObject.tag;
 
         TF = true;

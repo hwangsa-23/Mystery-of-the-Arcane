@@ -22,6 +22,7 @@ public class ClassRoom2Character : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
 
         characterTag = gameObject.tag;
         ClassRoom2TalkImage talkImage = TalkImage.GetComponent<ClassRoom2TalkImage>();

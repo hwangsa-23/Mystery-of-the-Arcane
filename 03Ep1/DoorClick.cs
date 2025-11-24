@@ -14,6 +14,8 @@ public class DoorClick : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (ClueSpawner.IsClueOpen) return;
+
         if (string.IsNullOrEmpty(sceneName))
         {
             Debug.LogWarning("⚠ Scene Name이 비어 있습니다!");

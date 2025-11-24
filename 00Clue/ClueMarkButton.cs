@@ -37,7 +37,7 @@ public class ClueMarkButton : MonoBehaviour
             TalkPage.SetActive(false);
             ClassSetActiveF();
             DisableButtonClick();
-            ClueSpawner.clueInstance.SetActive(false); // UI 비활성화
+            ClueSpawner.CloseClue(); // UI 비활성화
         }
     }
 
