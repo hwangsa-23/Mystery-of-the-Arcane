@@ -43,11 +43,6 @@ public class ScienceStartDirector : MonoBehaviour
 
     void OnQuitButtonClicked()
     {
-        // 게임 종료
-        Application.Quit();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        SceneManager.LoadScene("06Silheomsil_GetObj");
     }
 }

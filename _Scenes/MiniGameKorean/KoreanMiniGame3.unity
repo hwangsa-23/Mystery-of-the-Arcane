@@ -168,7 +168,11 @@ MonoBehaviour:
   fadeTime: 1
   rightTextObj: {fileID: 833778449}
   rightText: {fileID: 1333128276}
-  wrongMessage: 
+  wrongMessage: "\uB098\uC544 \u2192 '\uB0AB\uB2E4'\uC758 \uD65C\uC6A9\uD615\r\nex)
+    \uB108\uC758 \uB9C8\uBC95 \uC2E4\uB825\uC774 \uC5BC\uB978 \uB098\uC544\uC9C0\uAE38
+    \uBC14\uB784\uAC8C.\r\n\uB0B3\uC544 \u2192 '\uB0B3\uB2E4'\uC758 \uD65C\uC6A9\uD615\r\nex)
+    \uC804\uC124 \uC18D \uC6A9\uC744 \uB0B3\uC740 \uB9C8\uBC95\uC0AC\uAC00\r\n \uC774
+    \uD559\uAD50\uB97C \uC138\uC6E0\uB2E4\uC9C0."
   yesButton: {fileID: 1027842790}
   noButton: {fileID: 1554825328}
   nextButton: {fileID: 221441774}

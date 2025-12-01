@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnglishRestart : MonoBehaviour
 {
@@ -12,17 +15,11 @@ public class EnglishRestart : MonoBehaviour
 
     public void ClickedQuit()
     {
-        if (EnglishSceneController.Instance != null)
-            EnglishSceneController.Instance.QuitScene();
-        else
-            Debug.LogError("EnglishSceneController.Instance is null");
+        SceneManager.LoadScene("04ClassRoom");
     }
 
     public void ClickedSuccQuit()
     {
-        if (EnglishSceneController.Instance != null)
-            EnglishSceneController.Instance.ClickedSuccQuit();
-        else
-            Debug.LogError("EnglishSceneController.Instance is null");
+         SceneManager.LoadScene("04ClassRoom_GetObj");
     }
 }
